@@ -184,11 +184,11 @@ sequenceDiagram
     participant Server
 
     Client->>Server: TLS Client Hello (SNI: www.youtube.com Plaintext)
-    Note over Client, Server: DPI Engine Extracts SNI Here!
+    Note over Client,Server: DPI Engine Extracts SNI Here!
     Server-->>Client: TLS Server Hello (Certificate)
     Client->>Server: Key Exchange
-    Note over Client, Server: TLS connection established
-    Client=>>Server: Encrypted Application Data
+    Note over Client,Server: TLS connection established
+    Client->>Server: Encrypted Application Data
 ```
 
 ---
