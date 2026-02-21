@@ -1,9 +1,10 @@
 #  High-Performance Deep Packet Inspection (DPI) Engine
 
 These 3 lines sums up this project prefectly-
-The Problem: It's hard to tell what apps people are using (like YouTube or Facebook) on a network because the data is encrypted.
-The Solution: This project acts like a highly efficient "digital security guard" that peaks at the very outer label of the data packets before they are fully encrypted.
-The Result: It successfully identifies the applications being used and can instantly block them based on specific rules you give it, doing all of this incredibly fast using multiple running threads.
+**The Problem** : It's hard to tell what apps people are using (like YouTube or Facebook) on a network because the data is encrypted.
+**The Solution** : This project acts like a highly efficient "digital security guard" that peaks at the very outer label of the data packets before they are fully encrypted.
+**The Result** : It successfully identifies the applications being used and can instantly block them based on specific rules you give it, doing all of this incredibly fast using multiple running threads.
+
 In short: It reads network traffic, figures out what website someone is trying to visit before the encryption kicks in, and either allows or blocks it based on your rules.
 
 ---
