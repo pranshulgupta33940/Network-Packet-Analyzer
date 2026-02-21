@@ -1,10 +1,14 @@
-# 🚀 High-Performance Deep Packet Inspection (DPI) Engine
+#  High-Performance Deep Packet Inspection (DPI) Engine
 
-A highly concurrent, multi-threaded C++ DPI engine capable of parsing binary PCAP files, reconstructing the TCP/IP stack, and classifying network traffic by extracting TLS SNI and HTTP Host headers without decrypting payloads.
+These 3 lines sums up this project prefectly-
+The Problem: It's hard to tell what apps people are using (like YouTube or Facebook) on a network because the data is encrypted.
+The Solution: This project acts like a highly efficient "digital security guard" that peaks at the very outer label of the data packets before they are fully encrypted.
+The Result: It successfully identifies the applications being used and can instantly block them based on specific rules you give it, doing all of this incredibly fast using multiple running threads.
+In short: It reads network traffic, figures out what website someone is trying to visit before the encryption kicks in, and either allows or blocks it based on your rules.
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 1. [What is DPI?](#-what-is-dpi)
 2. [Networking Background](#-networking-background)
 3. [Project Architecture](#-project-architecture)
@@ -16,7 +20,7 @@ A highly concurrent, multi-threaded C++ DPI engine capable of parsing binary PCA
 
 ---
 
-## 🔍 What is DPI?
+##  What is DPI?
 
 **Deep Packet Inspection (DPI)** is a networking technology used to examine the contents of data packets as they pass through a checkpoint. Unlike standard firewalls that only look at routing headers (IPs and Ports), DPI looks *inside* the packet payload.
 
@@ -37,7 +41,7 @@ graph LR
 
 ---
 
-## 🌐 Networking Background
+##  Networking Background
 
 ### The Network Stack (Layers)
 
@@ -77,13 +81,13 @@ A "flow" or connection is uniquely identified by 5 values:
 
 ---
 
-## ⚙️ Project Architecture
+##  Project Architecture
 
 We provide two implementations:
 1. **Simple (Single-threaded) (`main_working.cpp`)**: Perfect for understanding the core concepts and small packet captures.
 2. **Multi-threaded (`dpi_mt.cpp`)**: Enterprise-grade architecture built for high performance on large captures.
 
-### 🗂️ File Structure
+###  File Structure
 ```text
 packet_analyzer/
 ├── include/                 # Declarations
@@ -100,7 +104,7 @@ packet_analyzer/
 
 ---
 
-## 🛤️ The Journey of a Packet (Single-Threaded)
+##  The Journey of a Packet (Single-Threaded)
 
 ```mermaid
 flowchart TD
@@ -120,7 +124,7 @@ flowchart TD
 
 ---
 
-## 🚀 Multi-Threaded Architecture
+##  Multi-Threaded Architecture
 
 The multi-threaded version (`dpi_mt.cpp`) achieves high performance using a Producer-Consumer model and Consistent Hashing.
 
@@ -169,7 +173,7 @@ graph TD
 
 ---
 
-## 🔐 How SNI Extraction Works
+##  How SNI Extraction Works
 
 Even though HTTPS encrypts the connection payload, the initial handshake sends the requested domain in plaintext. We extract the Server Name Indication (SNI) right from the TLS Client Hello.
 
@@ -189,7 +193,7 @@ sequenceDiagram
 
 ---
 
-## 🛑 How Blocking Works
+##  How Blocking Works
 
 We implement **Flow-Based Blocking**. Instead of repeatedly inspecting every payload, we inspect until we find the app signature (usually in the Client Hello). Once blocked, all future packets for that flow are dropped in O(1) time.
 
@@ -206,7 +210,7 @@ graph TD
 
 ---
 
-## 🏗️ Building and Running
+##  Building and Running
 
 ### Prerequisites
 - macOS, Linux, or Windows (WSL) with a **C++17** compiler (`g++` or `clang++`).
