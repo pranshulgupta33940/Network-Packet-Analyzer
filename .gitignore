@@ -1,0 +1,24 @@
+# Exclude executables and objects
+dpi_engine
+dpi_simple
+*.exe
+*.o
+*.obj
+
+# Exclude large output pcaps
+output.pcap
+*.pcapng
+
+# Allow test pcap
+!test_dpi.pcap
+
+# Visual Studio / IDE
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.user
+
+# Build directory
+build/
+bin/
